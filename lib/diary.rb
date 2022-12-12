@@ -20,6 +20,16 @@ class Diary
     end
   
     def find_best_entry_for_reading_time(wpm, minutes)
-        return @entries.first
+        return @entries.filter do |entry|
+            entry.reading_time(wpm) <= minutes
+        end
+    end
+
+    private 
+
+    def readable_entries(wpm, minutes)
+        return @entries.filter do |entry|
+            entry.reading_time(wpm) <= minutes
+        end
     end
   end
