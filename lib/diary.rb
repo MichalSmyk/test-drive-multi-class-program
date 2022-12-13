@@ -20,7 +20,7 @@ class Diary
     end
   
     def find_best_entry_for_reading_time(wpm, minutes)
-        return @entries.filter do |entry|
+        readable_entries(wpm, minutes).max_by do |entry|
             entry.reading_time(wpm) <= minutes
         end
     end
